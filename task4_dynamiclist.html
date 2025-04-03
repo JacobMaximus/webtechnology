@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="itemInput"> 
+    <button id="addButton">Add</button>
+    <ul id="itemList"></ul>
+    
+    <script>
+        const button = document.querySelector('#addButton');
+        const ul = document.querySelector('#itemList');
+    
+        button.addEventListener('click', () => {
+            const text = document.querySelector('#itemInput');
+            if (text === '') return; 
+    
+            const li = document.createElement('li');
+            const btn = document.createElement('button');
+    
+            li.textContent = text.value.trim() + " ";
+            btn.textContent = 'Delete';
+    
+            btn.addEventListener('click', () => {
+                li.remove();
+                text.focus()
+            });
+    
+            li.appendChild(btn);
+            ul.appendChild(li);
+    
+            document.querySelector('#itemInput').value = '';
+        });
+    </script>
+    
+</body>
+</html>
